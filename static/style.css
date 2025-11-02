@@ -1,0 +1,196 @@
+/* static/style.css */
+
+/* Global styles and dark background */
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #202123; /* Dark background */
+    color: #ececf1; /* Light text */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Hide main scrollbar */
+}
+
+/* Main chat container */
+.chat-container {
+    flex-grow: 1;
+    overflow-y: auto; /* Scrollable chat history */
+    padding-bottom: 120px; /* Space for the input area */
+}
+
+/* Individual message styling */
+.message {
+    padding: 20px;
+    border-bottom: 1px solid #3e3e40;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+/* User and Bot specific backgrounds */
+.user-message {
+    background-color: #343541; /* Slightly lighter for user/messages */
+}
+
+.bot-message {
+    background-color: #40414f; /* Distinct color for bot messages */
+}
+
+/* Avatars */
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #6a6a6a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.bot-avatar {
+    background-color: #10a37f; /* ChatGPT green */
+}
+
+/* Content area for text */
+.message-content {
+    max-width: 800px;
+    white-space: pre-wrap; 
+    line-height: 1.6;
+}
+
+/* --- Markdown Styling for Code and Text --- */
+
+/* Style for inline code `print('hello')` */
+.message-content code {
+    background-color: #3e3e40;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Style for multi-line code blocks container */
+.message-content pre {
+    background-color: #282c34; 
+    border: 1px solid #3e3e40;
+    border-radius: 6px;
+    padding: 10px;
+    padding-top: 30px; /* Increased padding to make room for the copy button */
+    overflow-x: auto; 
+    margin-top: 0; 
+}
+
+.message-content pre code {
+    background: none; 
+    padding: 0;
+    color: #e6e6e6;
+    display: block;
+    white-space: pre;
+}
+
+.message-content strong {
+    color: #d1a510; 
+}
+
+.message-content ul, .message-content ol {
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+/* --- Copy Button Styling --- */
+
+/* Wrapper for positioning the button relative to the code block */
+.code-wrapper {
+    position: relative;
+    margin-top: 10px;
+    max-width: fit-content;
+}
+
+/* Style for the copy button */
+.copy-code-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 4px 8px;
+    background-color: rgba(68, 70, 84, 0.8);
+    color: #e6e6e6;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s, background-color 0.2s;
+    z-index: 10;
+}
+
+/* Show button on hover over the entire wrapper */
+.code-wrapper:hover .copy-code-button {
+    opacity: 1;
+}
+
+.copy-code-button:hover {
+    background-color: rgba(85, 87, 100, 0.9);
+}
+
+/* --- Input Area --- */
+
+.input-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #202123;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #3e3e40;
+}
+
+.input-wrapper {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    background-color: #343541;
+    border-radius: 8px;
+    border: 1px solid #40414f;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: none;
+    background: transparent;
+    color: #ececf1;
+    font-size: 16px;
+    resize: none; 
+    overflow-y: hidden; 
+    min-height: 20px;
+}
+
+.chat-input:focus {
+    outline: none;
+}
+
+.send-button {
+    background: none;
+    border: none;
+    color: #949494;
+    padding: 0 15px 0 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: color 0.2s;
+}
+
+.send-button:hover:not(:disabled) {
+    color: #10a37f; 
+}
+
+.send-button:disabled {
+    cursor: not-allowed;
+    color: #5d5d60;
+}
